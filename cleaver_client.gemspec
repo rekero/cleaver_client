@@ -9,5 +9,5 @@ Gem::Specification.new do |s|
   s.files = ['lib/cleaver_client.rb']
   s.homepage = 'http://rubygems.org/gems/cleaver_client'
   s.license = 'MIT'
-  s.add_dependency "rest-client"
+  s.add_dependency "rest_client"
 end
