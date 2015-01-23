@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'cleaver_client'
-  s.version = '0.0.3'
+  s.version = '0.0.4'
   s.date = '2015-01-20'
   s.summary = 'Cleaver API client'
   s.description = 'Cleaver API client'

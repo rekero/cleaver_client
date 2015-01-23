@@ -82,9 +82,6 @@ class CleaverClient
     if strategy == :get
       response = RestClient.get "#{@api_url}/#{uri}", params: data.to_json, :content_type => :json, :accept => :json
     else
-      p strategy
-      p "#{@api_ur}/#{uri}/"
-      p data.to_json
       response = RestClient2.send strategy, "#{@api_url}/#{uri}/", data.to_json, :content_type => :json, :accept => :json
     end
     response = JSON.parse response
