@@ -6,6 +6,20 @@ class Hash
   end
 end
 
+module RestClient2
+  include RestClient
+
+  def self.get(url, headers={}, &block)
+    Request.execute(:method => :get, :url => url, :headers => headers,
+                    :timeout => nil, :open_timeout => nil, &block)
+  end
+
+  def self.post(url, payload, headers={}, &block)
+    Request.execute(:method => :post, :url => url, :payload => payload, :headers => headers,
+                    :timeout => nil, :open_timeout => nil, &block)
+  end
+end
+
 #This class creates a new cleaver client instance
 class CleaverClient
 
@@ -68,8 +82,11 @@ class CleaverClient
     if strategy == :get
       response = RestClient.get "#{@api_url}/#{uri}", params: data.to_json, :content_type => :json, :accept => :json
     else
-      response = RestClient.send strategy, "#{@api_url}/#{uri}/", data.to_json, :content_type => :json, :accept => :json
-   end
+      p strategy
+      p "#{@api_ur}/#{uri}/"
+      p data.to_json
+      response = RestClient2.send strategy, "#{@api_url}/#{uri}/", data.to_json, :content_type => :json, :accept => :json
+    end
     response = JSON.parse response
     response
   end
